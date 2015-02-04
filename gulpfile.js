@@ -27,9 +27,7 @@ var appStream = gulp.src(paths.scripts)
 
 // Concatenate vendor scripts 
 var vendor = gulp.src([
-    './bower_components/angular/angular.js',
-    './bower_components/ngFx/dist/ngFx.min.js',
-    './bower_components/bootstrap/dist/js/bootstrap.min.js'
+    './bower_components/angular/angular.js'
     ])
   .pipe(concat('vendors.js'))
   .pipe(gulp.dest('./client/js'));
