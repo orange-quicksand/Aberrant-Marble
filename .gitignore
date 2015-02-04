@@ -22,6 +22,7 @@ coverage
 build/
 dist/
 client/lib
+.DS_Store
 
 # Dependency directorys
 # Deployed apps should consider commenting these lines out:
