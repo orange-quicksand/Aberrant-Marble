@@ -15,7 +15,8 @@
   "dependencies": {
     "angular-material": "~0.7.1",
     "ionic": "~0.9.27",
-    "icecomm": "*"
+    "icecomm": "*",
+    "mdi": "~0.8.82-alpha"
   },
   "resolutions": {
     "angular": "1.3.x",
