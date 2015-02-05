@@ -1,0 +1,24 @@
+<ion-view title="Loading">
+  <ion-content padding="true" ng-controller="loadingController">
+    
+    <div class="looking-for-match" ng-hide="isMatch">
+      <md-progress-circular class="md-accent md-hue-1 circular-loading" md-mode="indeterminate"></md-progress-circular>
+      <h2>Hold Tight! We're matching you with a native {{ targetLang }} speaker.</h2>
+      <div class="phrase" ng-show="phraseIsTranslated">
+        <h3>You will soon be able to say...</h3>
+        <div class="target">
+          <p>{{ phrase.target }}</p>
+        </div>
+        <div class="source">
+          <p>( {{ phrase.source }} )</p>
+        </div>
+      </div>        
+    </div>
+
+    <div class="found-match" ng-show="isMatch">    
+      <h2>You've Been Matched!</h2>
+      <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+    </div>
+    
+  </ion-content>
+</ion-view>

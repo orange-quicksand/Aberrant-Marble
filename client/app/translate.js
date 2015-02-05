@@ -21,7 +21,7 @@ app.factory('Translate', function($http){
       method: 'GET',
       url: 'https://www.googleapis.com/language/translate/v2',
       params: {
-        key: 'AIzaSyBC5v0BqpuJz6g3roho0JUkwzAX0PoR2Dk',
+        key: 'AIzaSyCLFlVB3J8zHStGIjc-zYJxgZKL7o9Tc8A',
         target: languageDict[targetLang],
         // source: languageDict[sourceLang],
         q: msg
