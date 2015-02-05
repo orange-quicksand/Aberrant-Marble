@@ -5,7 +5,7 @@ var app = angular.module('uSpeak', [
   'uSpeak.language1',
   'uSpeak.language2',
   'uSpeak.loading',
-  'ui.router'
+  'uSpeak.chat'
   ])
 
 .controller('toolbarController', function(){
