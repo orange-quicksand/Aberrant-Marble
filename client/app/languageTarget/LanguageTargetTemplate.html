@@ -1,12 +1,14 @@
 <ion-view view-title="Home">
+
   <ion-content>
-    <md-input-container flex columns="1">
+    <md-subheader style="background-color: #EEEEEE" class="md-accent"><span>Learning Language</span></md-subheader>
+    <md-input-container flex columns="1" class="md-accent">
       <label>Language</label>
       <input placeholder="Select learning language" ng-model="searchText">
     </md-input-container>
 
 
-  <md-content>
+  <md-content style="background-color: #EEEEEE">
       <md-card ng-repeat="language in languages | filter:searchText" ng-click="test(language)">
         <md-button class="md-raised" ng-click="test(language)">
           <span class="flag-icon flag-icon-{{ language[1] }}"></span>

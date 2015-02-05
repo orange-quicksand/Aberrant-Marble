@@ -27,7 +27,9 @@
 .mdi {
   float: right;
 }
-
+body{
+  background-color: #EEEEEE;
+}
 #videoChat {
   position: relative;
   width: 100%;
