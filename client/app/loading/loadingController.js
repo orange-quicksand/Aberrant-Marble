@@ -1,21 +1,23 @@
 angular.module('uSpeak.loading', ['ionic'])
 
-.controller('loadingController', function($scope, $interval, $state, Translate, Rooms, Phrases) {
+.controller('loadingController', function($scope, $interval, $state, languageService, Translate, Room, Phrases) {
 
-  // REMOVE! We're expected to grab this from a service.
-  $scope.targetLang = 'Spanish';
+  $scope.targetLang = languageService.language.target;
+  $scope.sourceLang = languageService.language.source;
 
-  $scope.speak = 'speaking';
-  $scope.roomId = null;
-  $scope.phrase = {};
-  $scope.phrase.source = Phrases.getPhrase();
+  console.log($scope.sourceLang, $scope.targetLang);
+
+  if (!$scope.targetLang && !$scope.sourceLang) {
+    $state.go('language1');
+  }
+
+  $scope.phrase = {
+    source : Phrases.getPhrase()
+  };
+
   $scope.isMatch = false;
   $scope.phraseIsTranslated = false;
   
-  // TODO:
-  // Make an initial check to see if the source and target languages were provided.
-  // .source, .target  <== Property Names
-
   $scope.translate = function() {
     Translate.translateMsg($scope.phrase.source, $scope.targetLang)
       .then(function(res) {
@@ -33,14 +35,12 @@ angular.module('uSpeak.loading', ['ionic'])
 
   $scope.translate();
   
-  Rooms.getRoom('English', 'Spanish')
+  Room.getRoom($scope.sourceLang, $scope.targetLang)
     .then(function(data) {
-      // Move to Video Chat Area with Room_id
-      // $state.transitionTo('chat', { roomId: data });
-
+      Room.setRoomId(data);
+      console.log(Room.getRoomId());      
+      $state.go('chat');
     });
-
-
 })
 
 .factory('Phrases', function() {

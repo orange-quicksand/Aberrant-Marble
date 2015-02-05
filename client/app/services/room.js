@@ -1,6 +1,17 @@
-app.factory('Rooms', function($http) {
+app.factory('Room', function($http) {
+  var  _roomId = null;
+
   return {
-    
+
+
+    getRoomId: function() {
+      return _roomId;
+    },
+
+    setRoomId: function(id) {
+      return _roomId = id;
+    },
+
     getRoom: function(source, target) {
       return $http({
         method: 'GET',
