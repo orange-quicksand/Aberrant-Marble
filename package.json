@@ -4,7 +4,7 @@
   "main": "server.js",
   "description": "Language learning whenever you want!",
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon server/server.js"
   },
   "repository": {
     "type": "git",
