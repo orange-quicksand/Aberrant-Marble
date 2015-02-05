@@ -1,26 +1,25 @@
 <!DOCTYPE html>
-<html ng-app='languageApp'>
+<html ng-app='uSpeak'>
 <head>
 <link rel="stylesheet" type="text/css" href="lib/angular-material/angular-material.css">
 <link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
 <body>
-  <div ng-controller="selectLanguageController">
+  <div ng-controller="toolbarController">
     <md-content>
       <md-toolbar>
         <h2 class="md-toolbar-tools">
-          <span>Toolbar</span>
+          <span>uSpeak</span>
         </h2>
       </md-toolbar>
     </md-content>
   </div>
 
 
+<ion-nav-view></ion-nav-view>
 
 
 
-
-</body>
 <script src="lib/angular/angular.js"></script>
 <script src="lib/angular-animate/angular-animate.js"></script>
 <script src="lib/angular-aria/angular-aria.js"></script>
@@ -30,8 +29,12 @@
 <script src="lib/ionic/release/js/ionic.js"></script>
 <script src="lib/ionic/release/js/ionic-angular.js"></script>
 
-
-
+<script src="app/app.js"></script>
+<script src="app/services/translate.js"></script>
+<script src="app/services/languageSelect.js"></script>
+<script src="app/language1/language1Controller.js"></script>
 <script src="app/languageApp.js"></script>
-<script src="app/translate.js"></script>
+
+
+</body>
 </html>
