@@ -1,0 +1,27 @@
+.flag-icon {
+  position: relative;
+  display: inline-block;
+  width: 1.3333333333333333em;
+  height: 1.3333333333333333em;
+  line-height: 1em;
+  background-size: contain;
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+.flag-icon-us {
+  background-image: url(./flags/4x3/us.svg);
+}
+.flag-icon-cn {
+  background-image: url(flags/4x3/cn.svg);
+}
+.flag-icon-es {
+  background-image: url(flags/4x3/es.svg);
+}
+.flag-icon-fr {
+  background-image: url(flags/4x3/fr.svg);
+}
+.flag-icon-it {
+  background-image: url(flags/4x3/it.svg);
+}
+.language-card p {
+}
