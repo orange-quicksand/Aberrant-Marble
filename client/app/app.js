@@ -1,8 +1,9 @@
 var app = angular.module('uSpeak', [ 
   'ngMaterial',
   'ionic',
+  'ui.router',
   'uSpeak.language1',
-  'ui.router'
+  'uSpeak.language2'
   ])
 
 .controller('toolbarController', function(){
