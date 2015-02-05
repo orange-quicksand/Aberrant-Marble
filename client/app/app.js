@@ -4,6 +4,8 @@ var app = angular.module('uSpeak', [
   'ui.router',
   'uSpeak.language1',
   'uSpeak.language2'
+  'uSpeak.loading',
+  'ui.router'
   ])
 
 .controller('toolbarController', function(){

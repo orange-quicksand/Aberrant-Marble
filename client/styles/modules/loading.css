@@ -1,0 +1,35 @@
+.looking-for-match {
+
+}
+
+.looking-for-match h2 {
+  text-align: center;
+  padding: 4vw;
+}
+
+.looking-for-match .circular-loading {
+  display: block;
+  margin: 10vh auto;
+}
+
+.looking-for-match .phrase {
+  display: block;
+  margin: 6vh auto;
+}
+
+.phrase h3 {
+  text-align: center;
+}
+.phrase .source {
+  font-size: 2vh;
+  text-align: center;
+}
+
+.phrase .target {
+  text-align: center;
+}
+
+.found-match h2 {
+  text-align: center;
+  margin-top: 40vh;
+}
