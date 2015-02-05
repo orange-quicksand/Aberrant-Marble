@@ -1,5 +1,7 @@
 var bodyParser = require('body-parser');
 var express = require('express');
+var crypto = require('crypto');
+
 var app = express();
 
 // config file to instantiate all queues

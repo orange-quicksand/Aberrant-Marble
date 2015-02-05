@@ -3,7 +3,7 @@ var app = angular.module('uSpeak', [
   'ionic',
   'ui.router',
   'uSpeak.language1',
-  'uSpeak.language2'
+  'uSpeak.language2',
   'uSpeak.loading',
   'ui.router'
   ])

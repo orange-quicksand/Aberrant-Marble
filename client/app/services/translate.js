@@ -1,4 +1,4 @@
-app.factory('Translate', function($http){
+app.factory('Translate', function($http) {
 
   // Values are the language codes for Google Translate
   var languageDict = {

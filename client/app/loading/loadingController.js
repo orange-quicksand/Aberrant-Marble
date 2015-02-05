@@ -1,6 +1,6 @@
 angular.module('uSpeak.loading', ['ionic'])
 
-.controller('loadingController', function($scope, $interval, Translate, Phrases) {
+.controller('loadingController', function($scope, $interval, $state, Translate, Rooms, Phrases) {
 
   // REMOVE! We're expected to grab this from a service.
   $scope.targetLang = 'Spanish';
@@ -33,6 +33,13 @@ angular.module('uSpeak.loading', ['ionic'])
 
   $scope.translate();
   
+  Rooms.getRoom('English', 'Spanish')
+    .then(function(data) {
+      // Move to Video Chat Area with Room_id
+      // $state.transitionTo('chat', { roomId: data });
+
+    });
+
 
 })
 
