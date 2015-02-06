@@ -28,6 +28,7 @@
   float: right;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 body{
   background-color: #EEEEEE;
 }
@@ -63,4 +64,8 @@ body{
 
 form {
   width: 100%;
+}
+body{
+  font-family: roboto;
+  background-color:#EEEEEE;
 }

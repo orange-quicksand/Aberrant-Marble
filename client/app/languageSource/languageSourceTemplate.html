@@ -8,9 +8,9 @@
     </md-input-container>
 
 
-  <md-content style="background-color: #EEEEEE">
+  <md-content style="background-color:#EEEEEE">
       <md-card ng-repeat="language in languages | filter:searchText">
-        <md-button class="md-raised" ng-click="test(language)">
+        <md-button class="md-raised" ng-click="userSelect(language)">
           <span class="flag-icon flag-icon-{{ language[1] }}"></span>
           <span class="lang">{{language[0]}}</span>
           <span class="mdi mdi-chevron-right"></span>

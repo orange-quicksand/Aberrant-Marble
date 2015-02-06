@@ -9,7 +9,9 @@
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 </head>
 <body>
+
   <div ng-controller="toolbarController">
+
     <md-content> 
       <md-toolbar md-scroll-shrink>
         <h2 class="md-toolbar-tools">
@@ -21,7 +23,7 @@
   </div>
 
 
-<ion-nav-view></ion-nav-view>
+  <ion-nav-view id="container" ng-class="{back: back}"></ion-nav-view>
 
 
 

@@ -7,16 +7,15 @@
       <input placeholder="Select learning language" ng-model="searchText">
     </md-input-container>
 
-
-  <md-content style="background-color: #EEEEEE">
-      <md-card ng-repeat="language in languages | filter:searchText" ng-click="test(language)">
-        <md-button class="md-raised" ng-click="test(language)">
+  <ion-content class="card-container" style="background-color:#EEEEEE">
+      <md-card ng-repeat="language in languages | filter:searchText" color="grey">
+        <md-button class="md-raised" ng-click="userSelect(language)">
           <span class="flag-icon flag-icon-{{ language[1] }}"></span>
           <span class="lang">{{language[0]}}</span>
           <span class="mdi mdi-chevron-right"></span>
         </md-button>
       </md-card>
-  </md-content>
+  </ion-content>
 
 
   </ion-content>

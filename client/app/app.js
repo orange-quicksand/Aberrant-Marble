@@ -1,6 +1,7 @@
 var app = angular.module('uSpeak', [ 
   'ngMaterial',
   'ionic',
+  'ngAnimate',
   'ui.router',
   'uSpeak.languageSource',
   'uSpeak.languageTarget',

@@ -49,7 +49,7 @@ app.get('/api/getroom', function(req, res) {
   } else {
     console.log('new room');
     var newRoom = crypto.pseudoRandomBytes(256).toString('base64');
-    console.log(newRoom);
+    console.log('I am the newRoom: ', newRoom);
     queues[Queue.stringify(nativeLanguage,desiredLanguage)].push(newRoom);
     partners.add(newRoom);
     res.status(200).send(newRoom);
