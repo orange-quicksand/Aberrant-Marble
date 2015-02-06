@@ -4,5 +4,5 @@ app.factory('languageService', function(){
       source: null,
       target: null
     }
-  }
+  };
 });

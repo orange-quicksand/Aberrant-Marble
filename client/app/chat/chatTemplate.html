@@ -1,9 +1,11 @@
 <ion-view view-title="Chat">
-  <ion-content ng-controller="chatController">
+  <ion-content>
 
   <div id="videoChat">
-    <!-- <video id="remoteVideo" autoplay> -->
-    <video id="localVideo" autoplay>
+    <video id="remoteVideo" autoplay></video>
+    <div id="localVideoCircle">  
+      <video id="localVideo" autoplay></video>
+    </div>
   </div>
 
   <div id="chatMessages">

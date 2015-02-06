@@ -9,30 +9,23 @@ angular.module('uSpeak.chat', [])
     $scope.messages.push(newMessage);
     $scope.newMessageText = '';
 
-    // TODO send message to webrtc
+    // TODO send message to icecomm
   };
 
-  // ======================
-  //       IceComm
-  // ======================
   var comm;
-
   comm = new Icecomm('tUYcGlKkEZqlHS5RnFefxkbqWomhWqlHYFaq/k68wcKJOMl8s');
-
   comm.connect('12323423434543');
-
 
   // Local video
   comm.on('local', function(options) {
     document.getElementById('localVideo').setAttribute('src', options.stream);
   });
 
-  // // Remote video
-  // comm.on('connected', function(options) {
-  //   console.log('CONNECTED!');
-  //   document.getElementById('remoteVideo').setAttribute('src', options.stream);
-
-  // });
+  // Remote video
+  comm.on('connected', function(options) {
+    console.log('CONNECTED!');
+    document.getElementById('remoteVideo').setAttribute('src', options.stream);
+  });
 
   comm.on('data', function(options) {
     console.log(options);
@@ -58,7 +51,7 @@ angular.module('uSpeak.chat', [])
   });
 
 
-});
+// });
 
 // app.factory('Comm', function () {
 
@@ -66,4 +59,4 @@ angular.module('uSpeak.chat', [])
 
 //   return comm;
 
-// });
+});
