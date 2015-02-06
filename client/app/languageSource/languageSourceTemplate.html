@@ -1,13 +1,13 @@
 <ion-view view-title="Home">
-  <ion-content ng-controller="language2Controller">
+  <ion-content ng-controller="languageSourceController">
     <md-input-container flex columns="1">
       <label>Language</label>
-      <input placeholder="Select learning language" ng-model="searchText">
+      <input placeholder="Select your native language" ng-model="searchText">
     </md-input-container>
 
 
   <md-content>
-      <md-card ng-repeat="language in languages | filter:searchText" ng-click="test(language)">
+      <md-card ng-repeat="language in languages | filter:searchText">
         <md-button class="md-raised" ng-click="test(language)">
           <span class="flag-icon flag-icon-{{ language[1] }}"></span>
           <span class="lang">{{language[0]}}</span>

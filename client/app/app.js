@@ -2,8 +2,8 @@ var app = angular.module('uSpeak', [
   'ngMaterial',
   'ionic',
   'ui.router',
-  'uSpeak.language1',
-  'uSpeak.language2',
+  'uSpeak.languageSource',
+  'uSpeak.languageTarget',
   'uSpeak.loading',
   'uSpeak.chat'
   ])
@@ -13,15 +13,15 @@ var app = angular.module('uSpeak', [
 
 .config(function($stateProvider, $urlRouterProvider){
   $stateProvider
-    .state('language1', {
+    .state('languageSource', {
       url: '/',
-      templateUrl: 'app/language1/language1Template.html',
-      controller: 'language1Controller'
+      templateUrl: 'app/languageSource/languageSourceTemplate.html',
+      controller: 'languageSourceController'
     })
-    .state('language2', {
+    .state('languageTarget', {
       url: '/1',
-      templateUrl: 'app/language2/language2Template.html',
-      controller: 'language2Controller'
+      templateUrl: 'app/languageTarget/languageTargetTemplate.html',
+      controller: 'languageTargetController'
     })
     .state('loading', {
       url: '/loading',
