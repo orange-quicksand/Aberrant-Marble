@@ -20,7 +20,7 @@ coverage
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
-dist/
+# dist/
 client/lib
 .DS_Store
 client/.DS_Store

@@ -19,7 +19,7 @@ var app = angular.module('uSpeak', [
       controller: 'languageSourceController'
     })
     .state('languageTarget', {
-      url: '/1',
+      url: '/target',
       templateUrl: 'app/languageTarget/languageTargetTemplate.html',
       controller: 'languageTargetController'
     })

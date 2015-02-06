@@ -1,4 +1,4 @@
-angular.module('uSpeak.loading', ['ionic'])
+angular.module('uSpeak.loading', [])
 
 .controller('loadingController', function($scope, $interval, $state, languageService, Translate, Room, Phrases) {
 
@@ -8,7 +8,7 @@ angular.module('uSpeak.loading', ['ionic'])
   console.log($scope.sourceLang, $scope.targetLang);
 
   if (!$scope.targetLang && !$scope.sourceLang) {
-    $state.go('language1');
+    $state.go('languageSource');
   }
 
   $scope.phrase = {
@@ -35,12 +35,18 @@ angular.module('uSpeak.loading', ['ionic'])
 
   $scope.translate();
   
-  Room.getRoom($scope.sourceLang, $scope.targetLang)
+  $scope.getRoom = function() {
+    Room.getRoom($scope.sourceLang, $scope.targetLang)
     .then(function(data) {
+      console.log('Called!');
       Room.setRoomId(data);
-      console.log(Room.getRoomId());      
+      console.log(Room.getRoomId());
       $state.go('chat');
     });
+  };
+
+  $scope.getRoom();
+
 })
 
 .factory('Phrases', function() {

@@ -13,6 +13,7 @@ var host = process.env.host || '127.0.0.1';
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
+// app.use(express.static(__dirname + '/../client/'));
 app.use(express.static(__dirname + '/../client/'));
 
 app.listen(port);
