@@ -3,9 +3,7 @@ angular.module('uSpeak.loading', [])
 .controller('loadingController', function($scope, $interval, $state, languageService, Translate, Room, Phrases) {
 
   $scope.targetLang = languageService.language.target;
-  $scope.sourceLang = languageService.language.source;
-
-  console.log($scope.sourceLang, $scope.targetLang);
+  $scope.sourceLang = languageService.language.source;  
 
   if (!$scope.targetLang && !$scope.sourceLang) {
     $state.go('languageSource');
@@ -37,10 +35,8 @@ angular.module('uSpeak.loading', [])
   
   $scope.getRoom = function() {
     Room.getRoom($scope.sourceLang, $scope.targetLang)
-    .then(function(data) {
-      console.log('Called!');
-      Room.setRoomId(data);
-      console.log(Room.getRoomId());
+    .then(function(data) {      
+      Room.setRoomId(data);      
       $state.go('chat');
     });
   };
