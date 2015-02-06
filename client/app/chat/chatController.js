@@ -1,69 +1,112 @@
 angular.module('uSpeak.chat', [])
 
-.controller('chatController', function($scope){
+.controller('chatController', function($scope, Translate, languageService, Room){
 
-  $scope.messages = [];
+  console.log(languageService.language.source);
+  console.log(languageService.language.target);
+  $scope.roomId = Room.getRoomId() || 'testsdfdfs';
 
-  $scope.sendMessage = function () {
-    var newMessage = { text: $scope.newMessageText };
-    $scope.messages.push(newMessage);
-    $scope.newMessageText = '';
-
-    // TODO send message to webrtc
-  };
-
-  // ======================
-  //       IceComm
-  // ======================
-  var comm;
-
-  comm = new Icecomm('tUYcGlKkEZqlHS5RnFefxkbqWomhWqlHYFaq/k68wcKJOMl8s');
-
-  comm.connect('12323423434543');
-
+  // Connecet to Icecomm 
+  $scope.comm = new Icecomm('tUYcGlKkEZqlHS5RnFefxkbqWomhWqlHYFaq/k68wcKJOMl8s');
+  $scope.comm.connect($scope.roomId);
 
   // Local video
-  comm.on('local', function(options) {
+  $scope.comm.on('local', function(options) {
     document.getElementById('localVideo').setAttribute('src', options.stream);
   });
 
-  // // Remote video
-  // comm.on('connected', function(options) {
-  //   console.log('CONNECTED!');
-  //   document.getElementById('remoteVideo').setAttribute('src', options.stream);
+  // Remote video
+  $scope.comm.on('connected', function(options) {
+    console.log('CONNECTED!');
+    document.getElementById('remoteVideo').setAttribute('src', options.stream);
 
-  // });
+    $scope.comm.on('data', function(options) {
+      console.log('data!!!!');
+      console.log(options);
+      $scope.$apply(function(){
+        Translate.translateMsg(options.data, languageService.language.source, languageService.language.target)
+        .then(function(translatedMsg){
+          console.log(translatedMsg);
+          var translatedText = translatedMsg.data.translations[0].translatedText;
 
-  comm.on('data', function(options) {
-    console.log(options);
-    // $scope.$apply(function(){
-    //   Translate.translateMsg(options.data, $scope.language.native, $scope.language.desired)
-    //   .then(function(translatedMsg){
-    //     console.log(translatedMsg);
-    //     var translatedText = translatedMsg.data.translations[0].translatedText;
-    //     $scope.convo += 'Them: ' + options.data + '\n';
-    //     $scope.convo += 'Them (translated): ' + translatedText + '\n';
-    //     $scope.scrollBottom();
-    //   });
-    // });
+          var newMsg = {
+            user: 'Them',
+            text: options.data
+          };
+          var newTranslated = {
+            user: 'Them (translated)',
+            text: translatedText
+          };
+
+          $scope.messages.push(newMsg);
+          $scope.messages.push(newTranslated);
+
+
+          // $scope.convo += 'Them: ' + options.data + '\n';
+          // $scope.convo += 'Them (translated): ' + translatedText + '\n';
+          // $scope.scrollBottom();
+        });
+      });
+    });
+
   });
 
-  comm.on('disconnect', function(options) {
+
+
+  $scope.comm.on('disconnect', function(options) {
     console.log('DISCONNECTED');
-
-    // document.getElementById(options.callerID).remove();
-    // $scope.$apply(function() {
-    //   $scope.showChatApp = false;
-    // });
+ 
   });
+
+
+  $scope.messages = [];
+
+  $scope.sendMessage = function (msg) {
+    console.log(msg);
+    $scope.comm.send(msg);
+    var newMsg = {
+      user: 'You',
+      text: msg
+    };
+    $scope.messages.push(newMsg);
+    $scope.clearMsg();
+  };
+
+  $scope.clearMsg = function () {
+    $scope.msg = '';
+  };
+
+  // Function to send a message to the language partner
+  // and display the sent message in the chatbox
+
+  // $scope.convo = '';
+  // $scope.sendMsg = function(){
+  //   var newMsg = $scope.msg + '';
+  //   if(newMsg.trim() !== '') {
+  //     $scope.comm.send($scope.msg);
+  //     $scope.convo += 'You: ' + $scope.msg + '\n';
+  //     $scope.msg = '';
+  //     // $scope.scrollBottom();
+  //     document.getElementById('chatMsg').focus();
+  //   }
+  // };
+
+  // // Function to send a chat message when the enter/return
+  // // button is pressed
+  // $scope.handleKeyPress = function(event){
+  //   console.log('pressed');
+  //   if(event.which === 13) {
+  //   console.log($scope.mmsg);
+  //     console.log('send')
+  //     $scope.sendMsg();
+  //   }
+  // };
+
+  // // Function to move the scroll bar to the bottom of the textarea
+  // $scope.scrollBottom = function(){
+  //   var chatBox = document.getElementById('chatBox');
+  //   chatBox.scrollTop = 99999;
+  // };
 
 
 });
-
-// app.factory('Comm', function () {
-
-
-
-//   return comm;
-
-// });

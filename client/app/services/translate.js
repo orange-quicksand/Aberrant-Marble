@@ -29,10 +29,10 @@ app.factory('Translate', function($http) {
     })
     .then(function(res){
       return res.data;
-    })
-  }
+    });
+  };
 
   return {
     translateMsg: translateMsg
   };
-})
+});
