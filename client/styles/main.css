@@ -1,4 +1,5 @@
 .flag-icon {
+  float: left;
   position: relative;
   display: inline-block;
   width: 1.3333333333333333em;
@@ -23,5 +24,6 @@
 .flag-icon-it {
   background-image: url(flags/4x3/it.svg);
 }
-.language-card p {
+.mdi {
+  float: right;
 }
