@@ -32,16 +32,27 @@ angular.module('uSpeak.loading', [])
   
 
   $scope.translate();
+
+  $scope.isPartnerReady = function() {
+    Room.isPartnerReady()
+      .then(function(partner) {
+        if(partner.isReady) {
+          $interval.cancel($scope.partnerFindTimer);
+          $state.go('chat');
+        }
+      })
+  }
   
-  $scope.getRoom = function() {
-    Room.getRoom($scope.sourceLang, $scope.targetLang)
-    .then(function(data) {      
-      Room.setRoomId(data);      
-      $state.go('chat');
+  $scope.setAsReady = function() {
+    Room.setAsReady($scope.sourceLang, $scope.targetLang)
+    .then(function(data) {            
+      $scope.partnerFindTimer = $interval(function() {
+        $scope.isPartnerReady();
+      }, 3000)
     });
   };
 
-  $scope.getRoom();
+  $scope.setAsReady();
 
 })
 
