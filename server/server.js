@@ -8,6 +8,9 @@ var app = express();
 var queues = require('./queue/queueCollection.js');
 var queueModel = require('./queue/queueModel.js');
 
+var Partner = require('./partner/partnerModel.js');
+var partners = require('./partner/partnerCollection.js');
+
 var port = process.env.PORT || 3000;
 var host = process.env.host || '127.0.0.1';
 
@@ -23,12 +26,12 @@ module.exports = app;
 
 //when a user clicks his native and desired language and clicks go, send a post request to api/languages
 //create a queue for that specific language queue, then 
-app.get('/api/getroom', function(request, response) {
+app.get('/api/getroom', function(req, res) {
 
 
-  var nativeLanguage = request.query.native;
-  var desiredLanguage = request.query.desired;
-  var requireNative = (request.query.requireNative === "true");
+  var nativeLanguage = req.query.native;
+  var desiredLanguage = req.query.desired;
+  var requireNative = (req.query.requireNative === "true");
 
   console.log(nativeLanguage,desiredLanguage);
 
@@ -37,17 +40,27 @@ app.get('/api/getroom', function(request, response) {
   var partnerRoom = null;
   if (!requireNative && nonNativePartners.length() > 0) {
     partnerRoom = nonNativePartners.shift();
-    response.status(200).send(partnerRoom);
+    partners.add(partnerRoom);
+    res.status(200).send(partnerRoom);
   } else if (nativePartners.length() > 0) {
     partnerRoom = nativePartners.shift();
-    response.status(200).send(partnerRoom);
+    partners.add(partnerRoom);
+    res.status(200).send(partnerRoom);
   } else {
     console.log('new room');
     var newRoom = crypto.pseudoRandomBytes(256).toString('base64');
     console.log(newRoom);
     queues[Queue.stringify(nativeLanguage,desiredLanguage)].push(newRoom);
-    response.status(200).send(newRoom);
+    partners.add(newRoom);
+    res.status(200).send(newRoom);
   }
+});
+
+// Check if the partner is ready
+app.get('/api/ready', function(req, res) {
+  var roomId = req.query.roomId;
+  var isReady = partners.isReady(roomId);  
+  res.status(200).send({isReady: isReady});
 });
 
 app.get('/api/position', function(req, res) {
@@ -55,5 +68,4 @@ app.get('/api/position', function(req, res) {
   // response.s 
   var room = req.query.room;
   // for(var i = 0;)
-
 });
