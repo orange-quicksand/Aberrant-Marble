@@ -1,7 +1,9 @@
 angular.module('uSpeak.chat', [])
 
-.controller('chatController', function($scope, Translate, Room){
+.controller('chatController', function($scope, Translate, languageService, Room){
 
+  console.log(languageService.language.source);
+  console.log(languageService.language.target);
   $scope.roomId = Room.getRoomId() || 'testsdfdfs';
 
   $scope.comm = new Icecomm('tUYcGlKkEZqlHS5RnFefxkbqWomhWqlHYFaq/k68wcKJOMl8s');
@@ -18,35 +20,39 @@ angular.module('uSpeak.chat', [])
   $scope.comm.on('connected', function(options) {
     console.log('CONNECTED!');
     document.getElementById('remoteVideo').setAttribute('src', options.stream);
-  });
 
-  $scope.comm.on('data', function(options) {
-    console.log(options);
-    $scope.$apply(function(){
-      Translate.translateMsg(options.data, $scope.language.native, $scope.language.desired)
-      .then(function(translatedMsg){
-        console.log(translatedMsg);
-        var translatedText = translatedMsg.data.translations[0].translatedText;
+    $scope.comm.on('data', function(options) {
+      console.log('data!!!!');
+      console.log(options);
+      $scope.$apply(function(){
+        Translate.translateMsg(options.data, languageService.language.source, languageService.language.target)
+        .then(function(translatedMsg){
+          console.log(translatedMsg);
+          var translatedText = translatedMsg.data.translations[0].translatedText;
 
-        var newMsg = {
-          user: 'Them',
-          text: options.data
-        };
-        var newTranslated = {
-          user: 'Them (translated)',
-          text: translatedText
-        };
+          var newMsg = {
+            user: 'Them',
+            text: options.data
+          };
+          var newTranslated = {
+            user: 'Them (translated)',
+            text: translatedText
+          };
 
-        $scope.messages.push(newMsg);
-        $scope.messages.push(newTranslated);
+          $scope.messages.push(newMsg);
+          $scope.messages.push(newTranslated);
 
 
-        // $scope.convo += 'Them: ' + options.data + '\n';
-        // $scope.convo += 'Them (translated): ' + translatedText + '\n';
-        $scope.scrollBottom();
+          // $scope.convo += 'Them: ' + options.data + '\n';
+          // $scope.convo += 'Them (translated): ' + translatedText + '\n';
+          // $scope.scrollBottom();
+        });
       });
     });
+    
   });
+
+
 
   $scope.comm.on('disconnect', function(options) {
     console.log('DISCONNECTED');
