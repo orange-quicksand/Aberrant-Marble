@@ -4,7 +4,8 @@
   "main": "server.js",
   "description": "Language learning whenever you want!",
   "scripts": {
-    "start": "nodemon server/server.js"
+    "start": "node server/server.js",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
