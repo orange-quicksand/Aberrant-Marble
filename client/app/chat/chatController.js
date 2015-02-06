@@ -6,10 +6,9 @@ angular.module('uSpeak.chat', [])
   console.log(languageService.language.target);
   $scope.roomId = Room.getRoomId() || 'testsdfdfs';
 
+  // Connecet to Icecomm 
   $scope.comm = new Icecomm('tUYcGlKkEZqlHS5RnFefxkbqWomhWqlHYFaq/k68wcKJOMl8s');
-  console.log($scope.comm);
-  // $scope.comm.connect($scope.roomId);
-  $scope.comm.connect('12312312312321');
+  $scope.comm.connect($scope.roomId);
 
   // Local video
   $scope.comm.on('local', function(options) {
@@ -49,7 +48,7 @@ angular.module('uSpeak.chat', [])
         });
       });
     });
-    
+
   });
 
 
