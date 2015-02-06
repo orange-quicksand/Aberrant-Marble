@@ -7,12 +7,12 @@
 
 
   <md-content>
-      <md-card class="language-card" ng-repeat="language in languages | filter:searchText" ng-click="test(language)">
-        <!-- <md-button class="md-raised"> -->
-        <span class="flag-icon flag-icon-{{ language[1] }}"></span>
-        <p>{{language[0]}}</p>
-        <span class="mdi mdi-chevron-right"></span>
-        <!-- </md-button> -->
+      <md-card ng-repeat="language in languages | filter:searchText">
+        <md-button class="md-raised" ng-click="test(language)">
+          <span class="flag-icon flag-icon-{{ language[1] }}"></span>
+          <span class="lang">{{language[0]}}</span>
+          <span class="mdi mdi-chevron-right"></span>
+        </md-button>
       </md-card>
   </md-content>
 
