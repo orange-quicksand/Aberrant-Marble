@@ -4,8 +4,13 @@
   "main": "server.js",
   "description": "Language learning whenever you want!",
   "scripts": {
-    "start": "nodemon server/server.js"
+    "start": "node server/server.js",
+    "postinstall": "bower install"
   },
+  "engines": {
+    "node": "0.10.35",
+    "npm": "2.4.x"
+  }, 
   "repository": {
     "type": "git",
     "url": "https://github.com/Aberrant-Marble/Aberrant-Marble"
@@ -18,6 +23,7 @@
   "homepage": "https://github.com/Aberrant-Marble/Aberrant-Marble",
   "dependencies": {
     "body-parser": "^1.10.2",
+    "bower": "^1.3.12",
     "express": "^4.11.1"
   },
   "devDependencies": {
