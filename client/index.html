@@ -9,18 +9,21 @@
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 </head>
 <body>
+
   <div ng-controller="toolbarController">
-    <md-content>
-      <md-toolbar>
+
+    <md-content> 
+      <md-toolbar md-scroll-shrink>
         <h2 class="md-toolbar-tools">
-          <span>uSpeak</span>
+          <span flex>uSpeak</span>
+          <md-button class="mdi mdi-view-headline md-fab md-primary" aria-label></md-button>
         </h2>
       </md-toolbar>
     </md-content>
   </div>
 
 
-<ion-nav-view></ion-nav-view>
+  <ion-nav-view></ion-nav-view>
 
 
 
