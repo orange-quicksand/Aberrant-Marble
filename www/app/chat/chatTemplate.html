@@ -1,32 +1,27 @@
 <ion-view view-title="Chat">
+
   <ion-content>
-  
-  <div layout="row">
     <div id="videoChat">
       <video id="remoteVideo" autoplay></video>
       <div id="localVideoCircle">  
         <video id="localVideo" autoplay></video>
       </div>
     </div>
-  </div>
+  </ion-content>
 
-  <div layout="row">
-    <div id="chatMessages">
-      <md-item ng-repeat="message in messages">
-        <md-item-content>
-        {{ message.user}}: {{ message.text }}
-        </md-item-content>
-      </md-item>
+  <div id="textChat">
+    <div class="col message" ng-repeat="message in messages">
+      {{ message.user}}: {{ message.text }}
     </div>
-  </div>
-  
-  <div layout="row">
+    
+  <div class="col">
     <form name="msgForm" ng-submit="sendMessage(msg); msg = '';">
-    <md-input-container flex columns="1">
-      <input type="text" name="msg" ng-model="msg">
-    </md-input-container>
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          <input id="messageInput" type="text" name="msg" ng-model="msg" placeholder="Type a message">
+        </label>
+      </div>
     </form>
   </div>
 
-  </ion-content>
 </ion-view>
