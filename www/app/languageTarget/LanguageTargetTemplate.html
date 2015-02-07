@@ -10,7 +10,7 @@
     </div>
 
     <ion-list>
-      <ion-item class="item item-icon-left" ng-repeat="language in languages | filter:searchText" type="item-text-wrap" ng-click="userSelect(language)">
+      <ion-item style="text-align: center" class="item item-icon-left" ng-repeat="language in languages | filter:searchText" type="item-text-wrap" ng-click="userSelect(language)">
         <i class="icon flag-icon flag-icon-{{ language[1] }}"></i>
         <div class="lang">{{language[0]}}</div>
       </ion-item>
