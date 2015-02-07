@@ -1,0 +1,34 @@
+{
+  "name": "icecomm-stable",
+  "authors": [
+    "Alex Zai <azai91@gmail.com>"
+  ],
+  "keywords": [
+    "webrtc",
+    "socketio"
+  ],
+  "main": "src/icecomm.js",
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "server.js",
+    "*.js",
+    "**/.*"
+  ],
+  "homepage": "https://github.com/azai91/icecomm-stable",
+  "dependencies": {
+    "icecomm": "*"
+  },
+  "_release": "d69ddb532e",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "d69ddb532e466ae5ea7dae545970c726802c4ed9"
+  },
+  "_source": "git://github.com/tawny-owl/icecomm-stable.git",
+  "_target": "*",
+  "_originalSource": "icecomm"
+}
