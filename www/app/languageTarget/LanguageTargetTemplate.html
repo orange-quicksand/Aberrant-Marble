@@ -1,22 +1,19 @@
-<ion-view view-title="Home">
+<ion-view view-title="Home1">
+  <ion-content class="padding">
 
-  <ion-content>
-    <md-subheader style="background-color: #EEEEEE" class="md-accent"><span>Learning Language</span></md-subheader>
-    <md-input-container flex columns="1" class="md-accent">
-      <label>Language</label>
-      <input placeholder="Select learning language" ng-model="searchText">
-    </md-input-container>
+    <h3>I want to practice...</h3>
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search languages"  ng-model="searchText">
+      </label>
+    </div>
 
-  <ion-content class="card-container" style="background-color:#EEEEEE">
-      <md-card ng-repeat="language in languages | filter:searchText" color="grey">
-        <md-button class="md-raised" ng-click="userSelect(language)">
-          <span class="flag-icon flag-icon-{{ language[1] }}"></span>
-          <span class="lang">{{language[0]}}</span>
-          <span class="mdi mdi-chevron-right"></span>
-        </md-button>
-      </md-card>
+    <ion-list>
+      <ion-item class="item item-icon-left" ng-repeat="language in languages | filter:searchText" type="item-text-wrap" ng-click="userSelect(language)">
+        <i class="icon flag-icon flag-icon-{{ language[1] }}"></i>
+        <div class="lang">{{language[0]}}</div>
+      </ion-item>
+    </ion-list>
   </ion-content>
-
-
-  </ion-content>
-</ion-view>   
+</ion-view>
