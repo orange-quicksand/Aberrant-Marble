@@ -1,9 +1,7 @@
 angular.module('uSpeak.chat', [])
 
-.controller('chatController', function($scope, Translate, languageService, Room){
+.controller('chatController', function($scope, Translate, languageService, Room, $ionicScrollDelegate){
 
-  console.log(languageService.language.source);
-  console.log(languageService.language.target);
   $scope.roomId = Room.getRoomId() || 'testsdfdfs';
 
   // Connecet to Icecomm 
@@ -41,10 +39,6 @@ angular.module('uSpeak.chat', [])
           $scope.messages.push(newMsg);
           $scope.messages.push(newTranslated);
 
-
-          // $scope.convo += 'Them: ' + options.data + '\n';
-          // $scope.convo += 'Them (translated): ' + translatedText + '\n';
-          // $scope.scrollBottom();
         });
       });
     });
@@ -52,12 +46,9 @@ angular.module('uSpeak.chat', [])
   });
 
 
-
   $scope.comm.on('disconnect', function(options) {
     console.log('DISCONNECTED');
- 
   });
-
 
   $scope.messages = [];
 
@@ -70,43 +61,11 @@ angular.module('uSpeak.chat', [])
     };
     $scope.messages.push(newMsg);
     $scope.clearMsg();
+    $ionicScrollDelegate.scrollBottom();
   };
 
   $scope.clearMsg = function () {
     $scope.msg = '';
   };
-
-  // Function to send a message to the language partner
-  // and display the sent message in the chatbox
-
-  // $scope.convo = '';
-  // $scope.sendMsg = function(){
-  //   var newMsg = $scope.msg + '';
-  //   if(newMsg.trim() !== '') {
-  //     $scope.comm.send($scope.msg);
-  //     $scope.convo += 'You: ' + $scope.msg + '\n';
-  //     $scope.msg = '';
-  //     // $scope.scrollBottom();
-  //     document.getElementById('chatMsg').focus();
-  //   }
-  // };
-
-  // // Function to send a chat message when the enter/return
-  // // button is pressed
-  // $scope.handleKeyPress = function(event){
-  //   console.log('pressed');
-  //   if(event.which === 13) {
-  //   console.log($scope.mmsg);
-  //     console.log('send')
-  //     $scope.sendMsg();
-  //   }
-  // };
-
-  // // Function to move the scroll bar to the bottom of the textarea
-  // $scope.scrollBottom = function(){
-  //   var chatBox = document.getElementById('chatBox');
-  //   chatBox.scrollTop = 99999;
-  // };
-
 
 });
